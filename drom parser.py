@@ -18,7 +18,7 @@ headers = {
 }
 
 #задаем url сайта
-oururl = "https://habarovsk.drom.ru/toyota/prius/generation3/restyling1/"
+oururl = "https://blagoveshchensk.drom.ru/toyota/prius/generation3/restyling1/"
 
 
 #задаем параметры поиска на первой странице сайта
@@ -35,7 +35,13 @@ for dt in linksdata:
    odo = str(odo).split()
    odo.pop(-1)
    odo = int(''.join(odo))
-   listoflinks.append({f'car {i}':[{'price': price},{'odo': odo}]})
+   year = dt.find('h3', 'css-16kqa8y efwtv890')
+   if year is None:
+      pass
+   else:
+      year = year.text.split(',')
+      year = int(year[1])
+   listoflinks.append({f'car {i}':[{'price': price},{'odo': odo}, {'year': year}]})
    i += 1
 
 
@@ -56,13 +62,19 @@ while next_page_relative_url is not None:
       odo_data = dt.find_all('span', 'css-1l9tp44 e162wx9x0')
       odo = odo_data[-1].text
       odo = str(odo).split()
+      year = dt.find('h3', 'css-16kqa8y efwtv890')
+      if year is None:
+         pass
+      else:
+         year = year.text.split(',')
+         year = int(year[1])
       if odo[0] == '(≈':
          odo.pop(0)
       odo.pop(-1)
       odo = ''.join(odo)
       if len(odo) < 5:
          continue
-      listoflinks.append({f'car {i}': [{'price': price}, {'odo': odo}]})
+      listoflinks.append({f'car {i}': [{'price': price}, {'odo': odo}, {'year': year}]})
       i += 1
 
    if htmldata.find('a', class_='_1j1e08n0 _1j1e08n5') is not None:
@@ -70,10 +82,8 @@ while next_page_relative_url is not None:
    else:
       next_page_relative_url = None
 
-#for el in listoflinks:
-   #print(el)
 
-#запись базы данных в файл
-with open('prius_drom_khv.json', 'w') as file:
+
+with open('prius_drom_blg.json', 'w') as file:
    json.dump(listoflinks, file, ensure_ascii=False)
 
