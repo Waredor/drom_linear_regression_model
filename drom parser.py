@@ -18,7 +18,7 @@ headers = {
 }
 
 #задаем url сайта
-oururl = "https://blagoveshchensk.drom.ru/toyota/prius/generation3/restyling1/"
+oururl = "https://habarovsk.drom.ru/toyota/prius/generation3/restyling1/"
 
 
 #задаем параметры поиска на первой странице сайта
@@ -84,6 +84,6 @@ while next_page_relative_url is not None:
 
 
 
-with open('prius_drom_blg.json', 'w') as file:
+with open('prius_drom_khv.json', 'w') as file:
    json.dump(listoflinks, file, ensure_ascii=False)
 
