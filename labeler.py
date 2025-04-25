@@ -1,8 +1,6 @@
 import json
 import pandas as pd
 
-annotated_data = []
-
 df = pd.DataFrame()
 
 with open('prius_drom_khv.json', 'r', encoding='utf-8') as file:
