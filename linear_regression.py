@@ -50,7 +50,7 @@ print(y_mp)
 
 #Сохраняем модели в файл
 
-#joblib.dump(mp_lr, 'linear_ML_models/linear_regression_multiple.pkl')
-#joblib.dump(simple_lr, 'linear_ML_models/linear_regression_odo.pkl')
+#joblib.dump(mp_lr, 'ML_models/linear_regression_multiple.pkl')
+#joblib.dump(simple_lr, 'ML_models/linear_regression_odo.pkl')
 
 

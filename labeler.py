@@ -49,6 +49,12 @@ for el in data_blg:
     i += 1
 
 df = df[df['odo'] > 80000]
+df['age'] = 2025 - df['year']
+#df['odo_per_year'] = df['odo'] / (2025 - df['year'])
+df = df.drop(columns=['year'])
+df = df[df['price'] <= df['price'].quantile(0.99)]  # Удаляем 1% самых больших значений
 
-print(df)
-df.to_csv('annotated_data.csv', index=False)
+print(f"Средняя цена: {df['price'].mean() / 10 ** 6} млн рублей")
+print(f"Медианная цена: {df['price'].median() / 10 ** 6} млн рублей")
+
+#df.to_csv('annotated_data.csv', index=False)
