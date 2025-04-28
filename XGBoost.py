@@ -10,7 +10,7 @@ import joblib
 print(f"Версия XGBoost: {xgb.__version__}")
 
 # Загрузка данных
-df = pd.read_csv('annotated_data.csv')
+df = pd.read_csv('annotated_data_CONC.csv')
 X = df.iloc[:, 1:]
 #X = X.drop(columns=['khv', 'blg', 'vdk'])
 y = df.iloc[:, 0] / 10 ** 6

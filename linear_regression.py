@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import joblib
 
-df = pd.read_csv('annotated_data.csv')
+df = pd.read_csv('annotated_data_CONC.csv')
 X = df.iloc[:, 1:]
 odo = df.iloc[:,1:2]
 y = df.iloc[:, 0] / 10 ** 6

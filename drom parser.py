@@ -18,7 +18,7 @@ headers = {
 }
 
 #задаем url сайта
-oururl = "https://habarovsk.drom.ru/toyota/prius/generation3/restyling1/"
+oururl = "https://blagoveshchensk.drom.ru/toyota/prius/generation3/restyling1/"
 
 
 #задаем параметры поиска на первой странице сайта
@@ -33,8 +33,11 @@ for dt in linksdata:
    odo_data = dt.find_all('span', 'css-1l9tp44 e162wx9x0')
    odo = odo_data[-1].text
    odo = str(odo).split()
-   odo.pop(-1)
-   odo = int(''.join(odo))
+   if len(odo) > 1:
+      odo.pop(-1)
+      odo = int(''.join(odo))
+   else:
+      odo = 0
    year = dt.find('h3', 'css-16kqa8y efwtv890')
    if year is None:
       pass
@@ -84,6 +87,6 @@ while next_page_relative_url is not None:
 
 
 
-with open('prius_drom_khv.json', 'w') as file:
+with open('prius_drom_blg_28_04_25.json', 'w') as file:
    json.dump(listoflinks, file, ensure_ascii=False)
 
